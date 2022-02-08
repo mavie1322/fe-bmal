@@ -1,6 +1,9 @@
 import React from 'react';
+import { Nav } from './Nav';
 
 export function Home() {
-  return <div>BMAL</div>;
+  return (
+    <Nav></Nav>
+  );
 }
 
