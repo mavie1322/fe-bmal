@@ -5,7 +5,7 @@ import { ArticlesList } from './ArticlesList';
 
 export function Nav() {
   const [topics, setTopics] = useState([]);
-  const [pickedTopic, setPickedTopic] = useState('')
+  const [pickedTopic, setPickedTopic] = useState('');
 
   const handleClick = (clickedTopic) => {
     setPickedTopic(clickedTopic);
@@ -15,15 +15,15 @@ export function Nav() {
     getTopics().then((topicsApi) => {
       setTopics(topicsApi);
     })
-  }, []);
-
+  }, [pickedTopic]);
 
   return (
     <>
     <div className='nav'>
     <ul className='nav_topics_ul'>
+      <li onClick={() => handleClick('')} className='nav_topics_li'>All</li>
     {topics.map((topic) => {
-      return <li onClick={() => handleClick(topic.slug)} className='nav_topics_li'>{topic.slug}</li>
+      return <li key={topic.slug} onClick={() => handleClick(topic.slug)} className='nav_topics_li'>{topic.slug}</li>
     })}
     </ul>
     </div>

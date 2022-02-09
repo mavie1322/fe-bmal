@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { getUsers } from '../utils/api';
 import IsUsernameExist from './IsUsernameExist';
 import styles from '../App.css'
+import { userContext } from '../context/user';
 
 
-export function LogIn() {
+export function LogIn({setLoggedInUser}) {
     const [signedName, setSignedName] = useState('');
     const [errorMessage, setErrorMessage] = useState(false);
 
@@ -14,6 +15,7 @@ export function LogIn() {
         getUsers().then((users) => {
             users.forEach(user => {
                 if(user.username === signedName) {
+                    //get user by usernmane and assign the data to setLoggedInUser
                     console.log('yess')
                 }
                 else {
