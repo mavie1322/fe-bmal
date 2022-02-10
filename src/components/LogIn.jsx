@@ -1,27 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { getUsers } from '../utils/api';
+import React, { useState } from 'react';
+import { getUserByUsername, getUsers } from '../utils/api';
 import IsUsernameExist from './IsUsernameExist';
-import styles from '../App.css'
-import { userContext } from '../context/user';
+import '../App.css'
 
 
 export function LogIn({setLoggedInUser}) {
     const [signedName, setSignedName] = useState('');
     const [errorMessage, setErrorMessage] = useState(false);
-
-
     const handleSubmit = (event) => {
         event.preventDefault();
-        getUsers().then((users) => {
-            users.forEach(user => {
-                if(user.username === signedName) {
-                    //get user by usernmane and assign the data to setLoggedInUser
-                    console.log('yess')
+        getUserByUsername(signedName).then((user) => {
+            if(user.username === signedName) {
+                setLoggedInUser({
+                 username: user.username,
+                avatar_url: user.avatar_url,
+                            name: user.name,
+                            auth: true
+                        })
+                    
                 }
-                else {
-                    setErrorMessage(true)
-                }
-            });
+                // else {
+                    
+                // }
+        
+        }).catch(() => {
+            setErrorMessage(true)
         })
     };
 
@@ -42,6 +45,7 @@ export function LogIn({setLoggedInUser}) {
                 {errorMessage && <IsUsernameExist/>}
             </div>
             <button className='login_button' type='submit'>Log In</button>
+            
         </form>
         </>
     );

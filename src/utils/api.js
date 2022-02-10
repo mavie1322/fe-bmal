@@ -10,6 +10,12 @@ export const getUsers = () => {
   });
 };
 
+export const getUserByUsername = (username) => {
+  return newsApi.get(`/users/${username}`).then((res) => {
+    return res.data.user;
+  });
+};
+
 export const getTopics = () => {
   return newsApi.get("/topics").then((res) => {
     return res.data.topics;
@@ -41,5 +47,11 @@ export const getArticles = (props, sortBy, order) => {
 export const getArticleById = (article_id) => {
   return newsApi.get(`/articles/${article_id}`).then((res) => {
     return res.data.article;
+  });
+};
+
+export const getCommentsByArticleId = (article_id) => {
+  return newsApi.get(`/articles/${article_id}/comments`).then((res) => {
+    return res.data.comments;
   });
 };

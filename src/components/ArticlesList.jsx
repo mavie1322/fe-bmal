@@ -19,17 +19,22 @@ export function ArticlesList(props) {
   return (
     <>
     <Queries sortBy={setSortBy} order={setOrder}/>
-    <div>
+    <div className='articleList_container'>
       <ul>
         {articlesList.map((article)=>{
           return (
-          <Link key={article.article_id} to={`/articles/${article.article_id}`}>
+          <Link key={article.article_id} to={`/articles/${article.article_id}`} className='articlesList_link'>
             <li>
-              <h6>{article.title}</h6>
-              <span>Posted by:{article.author}</span>
-              <p>{article.comment_count} Comments</p>
-              <p>{article.votes}</p>
-              <p>Created at {article.created_at}</p>
+              <div className='articlesList_li'>
+                <h3>{article.title}</h3>
+                <span>Posted by {article.author}</span>
+                <section>
+                  <p>{article.comment_count} comments</p>
+                  <p>{article.votes}</p>
+                  <p>Created on {article.created_at}</p>
+                </section>
+                
+              </div>
             </li>
           </Link>
           );

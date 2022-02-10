@@ -4,8 +4,15 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background-color:#e3f0f3;
-  text-transform: capitalize;
+  /* background-color:#e3f0f3; */
+  /* text-transform: capitalize;  */
+}
+body {
+  background-color: #d9eff3;
+}
+.app {
+  padding: 10px;
+  background-color: red;
 }
 
 .login {
@@ -14,7 +21,7 @@
   justify-content: center; 
   width: 75vw;
   height: 35vh;
-  margin: 25% auto;
+  margin: 5% auto;
   background-color: white;
   border: 0.1px solid #99dde9;
   border-radius: 10px;
@@ -22,7 +29,7 @@
 .login_title {
   text-align: center;
   font-weight: bolder;
-  margin-top: 25%;
+  margin-top: 5%;
   padding: 20px;
   font-family: 'Permanent Marker',
   cursive;
@@ -32,17 +39,14 @@
 .login > span {
   font-size: large;
   font-weight: bold;
-  background-color: white;
 }
 .login_label {
   /* padding-top: 20px; */
   text-align: start;
   font-weight: bold;
-  background-color: white;
 }
 
 .login_form {
-  background-color: white;
   display: flex;
   flex-direction: column;
   margin-top: 40px;
@@ -51,8 +55,7 @@
 .login_input{
   margin-top: 5px;
   height: 25px;
-background-color: white;
-border: 0.1px solid #d0d0d0;
+  border: 0.1px solid #d0d0d0;
 }
 .login_button {
 margin-top: 35px;
@@ -67,16 +70,16 @@ font-size: 13px;
 .username_exist{
   color: red;
   font-size: small;
-  background-color: white;
 }
 
 .header_nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 20px;
   border-bottom: 1px solid #99dde9;
-  margin: 20px;
+  margin: 10px;
 }
 .header_logo {
 font-family: 'Permanent Marker',
@@ -87,16 +90,41 @@ color: black;
 text-decoration: none;
 }
 
+.header_loggedUser_img {
+  /* border-radius: 50%; */
+  width: 80px;
+  height: 70px;
+  /* object-fit:cover; */
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+}
+
+.queries_selects {
+  display: grid;
+  grid-template-columns:auto auto;
+  grid-column-gap: 5px;
+  margin-left: 20px;
+}
+
+.queries_selects select {
+  width: 80px;
+  border: 1px solid black;
+  background-color: white;
+}
+
 .nav {
-  border-bottom: 1px solid #99dde9;
-  margin: 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 10px;
 }
 
 
 .nav_topics_ul {
   display: flex;
   justify-content: space-around;
-  margin: 20px;
+  margin: 10px;
   padding:10px;
 }
 .nav_topics_li {
@@ -104,5 +132,121 @@ text-decoration: none;
   text-align: center;
   padding: 10px;
   background-color: white;
+  border: 1px solid #99dde9;
   border-radius: 5px;
 }
+.articlesList_container {
+  background-color: pink;
+}
+.articlesList_link {
+  text-decoration: none;
+  color:black;
+}
+.articlesList_li {
+  margin: 20px;
+  background: white;
+  border: 1px solid #99dde9;
+}
+
+
+.articlesList_li h3,
+.articlesList_li span{
+  padding: 10px;
+}
+.articlesList_li section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 10px;
+}
+.article_section , .comment_container{
+  padding: 10px;
+  margin: 10px;
+  text-transform:none;
+  
+}
+
+.article_section h6 {
+  padding: 10px 0;
+  font-size: medium;
+  text-transform: capitalize;
+  
+}
+
+.article_section h2 {
+  text-align: center;
+  padding: 20px;
+  text-transform: none;
+}
+
+.article_container{
+  background-color: white;
+  margin: 10px;
+  
+}
+
+.article_date {
+  font-size: small;
+  color: #999393;
+  margin: 10px 0;
+}
+
+.article_hashtag {
+  margin: 10px 0;
+}
+
+.article_section article {
+  line-height: 20px;
+  text-align: justify;
+}
+.vote {
+  display: flex;
+  margin-top: 20px;
+}
+.vote p {
+  padding: 0 5px;
+}
+.vote button {
+  padding: 0 5px;
+}
+.comment_container {
+  border-top: 1px solid black;
+  
+}
+
+.comment_container article {
+  border: 1px solid #999393;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+.comment_author {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.comment_date {
+  margin-top: 20px;
+}
+.bottom_display {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (min-width: 1000px) {
+  .login {
+    width: 45vw;
+  }
+  
+  .login_label{
+    padding-top: 7px;
+  }
+
+ 
+}
+
+@media screen and (min-width: 600px){
+  
+}
+
