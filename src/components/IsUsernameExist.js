@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import styles from "../App.css";
+import React from "react";
 
-function IsUsernameExist({ setErrorMessage }) {
+function IsUsernameExist() {
   return <p className='username_exist'>Wrong username, please try again</p>;
 }
 

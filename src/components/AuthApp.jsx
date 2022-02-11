@@ -18,7 +18,6 @@ export function AuthApp() {
           <Route path='/topics' element={<Nav />}></Route>
           <Route path='/articles' element={<ArticlesList />}></Route>
           <Route path='/articles/:article_id' element={<Article />}></Route>
-          <Route path='/comments/:comment_id' element={}></Route>
           <Route path='/users/:username' element={<UserProfile />}></Route>
         </Routes>
       </BrowserRouter>

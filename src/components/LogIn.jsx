@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getUserByUsername, getUsers } from '../utils/api';
+import { getUserByUsername} from '../utils/api';
 import IsUsernameExist from './IsUsernameExist';
 import '../App.css'
 
@@ -12,16 +12,13 @@ export function LogIn({setLoggedInUser}) {
         getUserByUsername(signedName).then((user) => {
             if(user.username === signedName) {
                 setLoggedInUser({
-                 username: user.username,
-                avatar_url: user.avatar_url,
-                            name: user.name,
-                            auth: true
-                        })
+                    username: user.username,
+                    avatar_url: user.avatar_url,
+                    name: user.name,
+                    auth: true
+                })
                     
-                }
-                // else {
-                    
-                // }
+            }
         
         }).catch(() => {
             setErrorMessage(true)
