@@ -56,6 +56,14 @@ export const updateVoteByArticle = (article_id, votes) => {
   });
 };
 
+export const postCommentOnArticle = (article_id, commentBody) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, commentBody)
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
+
 export const getCommentsByArticleId = (article_id) => {
   return newsApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
     return data.comments;
@@ -66,4 +74,8 @@ export const updateVoteByComment = (comment_id, votes) => {
   return newsApi.patch(`/comments/${comment_id}`, votes).then(({ data }) => {
     return data.comment;
   });
+};
+
+export const deleteCommentOnArticle = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`);
 };
