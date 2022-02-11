@@ -71,14 +71,15 @@ export function Comment({ article_id }) {
 
   return (
     <>
+    {/* post a comment */}
       <section className='comment_container'>
-        <div>
-          <form onSubmit={handleSubmit}>
+        <div >
+          <form onSubmit={handleSubmit} className="comment_post">
             <div>
               <label>
                 <textarea
                   value={textToPost}
-                  cols='35'
+                  cols='40'
                   rows='5'
                   onChange={handleChange}></textarea>
               </label>
@@ -92,23 +93,25 @@ export function Comment({ article_id }) {
             </div>
           </form>
         </div>
+        {/* comments will appear below */}
         <h5>Discussion({comments.length})</h5>
-
-        {comments.map((comment) => {
+        {comments.map(({comment_id, author, body, votes, created_at}) => {
           return (
             <article
-              key={comment.comment_id}
+              key={comment_id}
               className='comment_container comment article'>
               <div>
                 <div className='bottom_display'>
+                  {/* redirect toward the user profile 
+                  delete span tage appears for comments written by user */}
                   <Link
-                    to={`/users/${comment.author}`}
+                    to={`/users/${author}`}
                     className='articlesList_link'>
-                    <p className='comment_author'>{comment.author}</p>
+                    <p className='comment_author'>{author}</p>
                   </Link>
-                  {loggedInUser.username === comment.author ? (
+                  {loggedInUser.username === author ? (
                     <div>
-                      <span className='article_delete' onClick={() => togglePopup(comment.comment_id)}>
+                      <span className='article_delete' onClick={() => togglePopup(comment_id)}>
                         Delete
                       </span>
                     </div>
@@ -116,36 +119,40 @@ export function Comment({ article_id }) {
                     ""
                   )}
                 </div>
-                <p className='comment_article'>{comment.body}</p>
+                <p className='comment_article'>{body}</p>
               </div>
+              {/* like and dislike button */}
               <div className='bottom_display'>
                 <div className='vote'>
                   <button
                     type='button'
                     onClick={() =>
-                      increaseCommentVotes(comment.comment_id, comment.votes)
+                      increaseCommentVotes(comment_id, votes)
                     }>
                     &#128077;
                   </button>
-                  <p>{comment.votes}</p>
+                  <p>{votes}</p>
                   <button
                     type='button'
                     onClick={() =>
-                      decreaseCommentVotes(comment.comment_id, comment.votes)
+                      decreaseCommentVotes(comment_id, votes)
                     }>
                     &#128078;
                   </button>
                 </div>
-                <p className='comment_date'>{comment.created_at}</p>
+                <p className='comment_date'>{created_at}</p>
               </div>
             </article>
           );
         })}
+        {/* popup window will appear when user want to delete his comments */}
         {isOpen && <Popup 
           content={
             <>
-            <h3>Are you sure you want to delete this comment?</h3>
-            <button type="button" onClick={() => deleteComment(commentId)}>Delete</button>
+            <div className="delete_container">
+              <h3>Are you sure you want to delete this comment?</h3>
+              <button type="button" onClick={() => deleteComment(commentId)}>Delete</button>
+            </div>
             </>
           }
           handleClose={togglePopup}
