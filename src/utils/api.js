@@ -36,7 +36,7 @@ export const getArticles = (props, sortBy, order) => {
     endpoint += `?topic=${props.topic}&order=${order}`;
   } else if (!props.topic && sortBy && order) {
     endpoint += `?sort_by=${sortBy}&order=${order}`;
-  } else {
+  } else if (props.topic && sortBy && order) {
     endpoint += `?topic=${props.topic}&sort_by=${sortBy}&order=${order}`;
   }
   return newsApi.get(endpoint).then(({ data }) => {

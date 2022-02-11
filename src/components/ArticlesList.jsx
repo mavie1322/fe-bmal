@@ -30,10 +30,10 @@ export function ArticlesList(props) {
                 <span>Posted by {article.author}</span>
                 <section>
                   <p>{article.comment_count} comments</p>
-                  <p>{article.votes}</p>
+                  {article.votes >= 0? <p className='heart'>{article.votes} ❤️</p> : <p className='heart'>{article.votes} 🖤</p>}
+                  
                   <p>Created on {article.created_at}</p>
                 </section>
-                
               </div>
             </li>
           </Link>

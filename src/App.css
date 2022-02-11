@@ -78,7 +78,7 @@ font-size: 13px;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  border-bottom: 1px solid #99dde9;
+  border-bottom: 2px solid #99dde9;
   margin: 10px;
 }
 .header_logo {
@@ -110,13 +110,11 @@ text-decoration: none;
 
 .queries_selects select {
   width: 80px;
-  border: 1px solid black;
   background-color: white;
 }
 
 .nav {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid #99dde9;
   margin: 10px;
 }
 
@@ -283,6 +281,24 @@ text-decoration: none;
   font-size: 20px;
 }
 
+.userProfile_data {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border-bottom: 2px solid #99dde9;
+}
+
+.userProfile_data  h3, .userProfile_data p, .userArticle h2{
+  text-align: center;
+  margin: 10px;
+}
+
+.userProfile_data img{
+  margin: 10px;
+  height: 30vh;
+  border-radius: 5px;
+  object-fit:contain;
+}
 
 @media screen and (min-width: 1000px) {
   .login {
