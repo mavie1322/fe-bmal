@@ -46,6 +46,7 @@ export const getArticles = (props, sortBy, order) => {
 
 export const getArticleById = (article_id) => {
   return newsApi.get(`/articles/${article_id}`).then(({ data }) => {
+    console.log(Date.parse(data.article.created_at));
     return data.article;
   });
 };

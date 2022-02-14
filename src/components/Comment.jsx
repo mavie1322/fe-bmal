@@ -8,11 +8,11 @@ import {
   deleteCommentOnArticle,
 } from "../utils/api";
 import Popup from "./Popup";
+import { PostComment } from "./PostComment";
 
 export function Comment({ article_id }) {
   const { loggedInUser } = useContext(UserContext);
   const [comments, setComments] = useState([]);
-  const [textToPost, setTextToPost] = useState("");
   const [votes, setVotes] = useState();
   const [commentId, setCommentId] = useState();
   const [isOpen, setIsOpen] = useState(false)
@@ -29,25 +29,7 @@ export function Comment({ article_id }) {
     deleteCommentOnArticle(comment_id)
   };
 
-  const handleChange = (event) => {
-    setTextToPost(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const commentRequested = { username: loggedInUser.username, body: textToPost };
-    postCommentOnArticle(article_id, commentRequested).then((commentData) => {
-      setComments((currentComments) => {
-        const newComments = [...currentComments, commentData];
-        return newComments;
-      })
-      setTextToPost('')
-    });
-  };
-
-  const cancelComment = () => {
-    setTextToPost('')
-  };
+ 
 
   const increaseCommentVotes = (comment_id, commentvotes) => {
     setCommentId(comment_id);
@@ -73,26 +55,7 @@ export function Comment({ article_id }) {
     <>
     {/* post a comment */}
       <section className='comment_container'>
-        <div >
-          <form onSubmit={handleSubmit} className="comment_post">
-            <div>
-              <label>
-                <textarea
-                  value={textToPost}
-                  cols='40'
-                  rows='5'
-                  onChange={handleChange}></textarea>
-              </label>
-            </div>
-
-            <div>
-              <button type='submit'>Post</button>
-              <button type='button' onClick={cancelComment}>
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
+        <PostComment article_id={article_id} setComments={setComments}/>
         {/* comments will appear below */}
         <h5>Discussion({comments.length})</h5>
         {comments.map(({comment_id, author, body, votes, created_at}) => {
