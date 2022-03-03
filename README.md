@@ -44,7 +44,7 @@ It will open the localhost in your browser
  ### Improvements:
  
  * Use UI framework such as Material UI
- * 1Build and Deploy the application
+ * Build and Deploy the application
  * Add more functionalities
 
  
