@@ -34,30 +34,40 @@ export function UserProfile() {
         </div>
         <div className='userArticle'>
           {/* articles posted by the user */}
-          <h2>Articles Posted</h2>
-          <ul>
-            {articlesList.map(
-              ({ article_id, title, comment_count, votes, created_at }) => {
-                return (
-                  <Link
-                    key={article_id}
-                    to={`/articles/${article_id}`}
-                    className='articlesList_link'>
-                    <li>
-                      <div className='articlesList_li'>
-                        <h3>{title}</h3>
-                        <section>
-                          <p>{comment_count} comments</p>
-                          <p>{votes}</p>
-                          <p>Created on {formatDate(created_at)}</p>
-                        </section>
+          <div className='userArticle_title'>
+            <h2>Articles Posted</h2>
+            <input className='more_input' type='button' value='+' />
+          </div>
+          {articlesList.map(
+            ({ article_id, title, comment_count, votes, created_at }) => {
+              return (
+                <Link
+                  key={article_id}
+                  to={`/articles/${article_id}`}
+                  className='articlesList_link'>
+                  <div className='articlesList_li'>
+                    <div className='articlesList_button'>
+                      <h3>{title}</h3>
+                      <div className='articlesList_input'>
+                        <input type='button' value='Edit' />
+                        <input type='button' value='Delete' />
                       </div>
-                    </li>
-                  </Link>
-                );
-              }
-            )}
-          </ul>
+                    </div>
+                    <section>
+                      <p>{comment_count} comments</p>
+                      {votes >= 0 ? (
+                        <p className='heart'>{votes} ❤️</p>
+                      ) : (
+                        <p className='heart'>{votes} 🖤</p>
+                      )}
+
+                      <p>Created on {formatDate(created_at)}</p>
+                    </section>
+                  </div>
+                </Link>
+              );
+            }
+          )}
         </div>
       </div>
     </>
