@@ -4,11 +4,13 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family:'Times New Roman', Times, serif ;
   /* background-color:#e3f0f3; */
   /* text-transform: capitalize;  */
 }
 body {
   background-color: #d9eff3;
+  font-size: 2vw;
 }
 .app {
   padding: 10px;
@@ -84,32 +86,51 @@ font-size: 13px;
 .header_logo {
 font-family: 'Permanent Marker',
 cursive;
-font-size:large;
+font-size:4vw;
 letter-spacing: 15px;
 color: black;
 text-decoration: none;
+margin: 50px;
+}
+.header_loggedUser {
+  margin: 0 50px
 }
 
 .header_loggedUser_img {
-  /* border-radius: 50%; */
   width: 80px;
   height: 70px;
-  /* object-fit:cover; */
   border-top-left-radius: 50% 50%;
   border-top-right-radius: 50% 50%;
   border-bottom-right-radius: 50% 50%;
   border-bottom-left-radius: 50% 50%;
+  
 }
+.header_loggedUser_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.header_loggedUser_div input {
+  border-style: none;
+  background-color: #d9eff3;
+  margin: 10px;
+
+}
+
 
 .queries_selects {
   display: grid;
-  grid-template-columns:auto auto;
-  grid-column-gap: 5px;
+  grid-template-columns:100px 100px;
+  grid-column-gap: 15px;
   margin-left: 20px;
+  margin-top: 20px;
 }
 
 .queries_selects select {
-  width: 80px;
+  width: 100px;
+  padding: 5px;
   background-color: white;
 }
 
@@ -126,19 +147,19 @@ text-decoration: none;
   padding:10px;
 }
 .nav_topics_li {
+  text-transform: capitalize;
   list-style: none;
   text-align: center;
-  padding: 10px;
+  padding: 10px 30px;
   background-color: white;
   border: 1px solid #99dde9;
   border-radius: 5px;
 }
-.articlesList_container {
-  background-color: pink;
-}
+
 .articlesList_link {
   text-decoration: none;
   color:black;
+
 }
 .articlesList_li {
   margin: 20px;
@@ -157,7 +178,27 @@ text-decoration: none;
   justify-content: space-around;
   padding: 5px;
   margin-top: 10px;
-  font-size: 10px;
+  font-size: -1vw;
+}
+.articlesList_button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.articlesList_button div {
+  padding: 0px 10px; 
+}
+
+.articlesList_input input{
+ margin-left: 10px;
+ border-style: none;
+ background-color: white;
+ 
+}
+
+.articlesList_input input:hover {
+  color: blue;
 }
 .article_section , .comment_container{
   padding: 10px;
@@ -181,6 +222,7 @@ text-decoration: none;
 
 .article_container{
   background-color: white;
+  border: 1px red solid;
   margin: 10px;
   
 }
@@ -298,9 +340,29 @@ text-decoration: none;
 
 .userProfile_data  h3, .userProfile_data p, .userArticle h2, .delete_container h3, .delete_container button {
   text-align: center;
-  margin: 10px;
+  margin: 20px;
 }
 
+.userArticle_title {
+  display: grid;
+  grid-template-columns: auto 70px;
+}
+.more_input {
+  border: 3px solid black;
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+  align-self:center;
+  text-align: center;
+  font-size: bold;
+  font-size: 2vw;
+  background-color: white;
+}
+
+.more_input:hover{
+  color: blue;
+  border: 3px solid blue;
+}
 .userProfile_data img{
   margin: 10px;
   height: 30vh;
@@ -321,7 +383,10 @@ text-decoration: none;
   font-size: medium;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1200px) {
+  body{
+    font-size: 1vw;
+  }
   .login {
     width: 45vw;
   }
@@ -330,10 +395,17 @@ text-decoration: none;
     padding-top: 7px;
   }
 
- 
+  .article_container {
+    width: 80%;
+    margin: 10px auto;
+  }
+  .more_input {
+    
+    width: 50px;
+    height: 50px;
+    
+  }
 }
 
-@media screen and (min-width: 600px){
-  
-}
+
 
