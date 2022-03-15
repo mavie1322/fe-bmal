@@ -44,9 +44,17 @@ export const getArticles = (props, sortBy, order) => {
   });
 };
 
+export const postArticle = (articleToPost) => {
+  return newsApi.post(`/articles`, articleToPost).then(({ data }) => {
+    return data.article;
+  });
+};
+export const deleteArticleById = (article_id) => {
+  return newsApi.delete(`/articles/${article_id}`);
+};
+
 export const getArticleById = (article_id) => {
   return newsApi.get(`/articles/${article_id}`).then(({ data }) => {
-    console.log(Date.parse(data.article.created_at));
     return data.article;
   });
 };
