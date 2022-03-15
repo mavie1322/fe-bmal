@@ -11,17 +11,20 @@ export function PostComment({ article_id, setComments }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const commentRequested = {
-      username: loggedInUser.username,
-      body: textToPost,
-    };
-    postCommentOnArticle(article_id, commentRequested).then((commentData) => {
-      setComments((currentComments) => {
-        const newComments = [commentData, ...currentComments];
-        return newComments;
+    if (textToPost) {
+      const commentRequested = {
+        username: loggedInUser.username,
+        body: textToPost,
+      };
+
+      postCommentOnArticle(article_id, commentRequested).then((commentData) => {
+        setComments((currentComments) => {
+          const newComments = [commentData, ...currentComments];
+          return newComments;
+        });
+        setTextToPost("");
       });
-      setTextToPost("");
-    });
+    }
   };
 
   const cancelComment = () => {
@@ -40,8 +43,8 @@ export function PostComment({ article_id, setComments }) {
           </label>
         </div>
 
-        <div>
-          <button type='submit'>Post</button>
+        <div className='postComment-btn'>
+          <button type='submit'>Post your comment</button>
           <button type='button' onClick={cancelComment}>
             Cancel
           </button>
