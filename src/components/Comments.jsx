@@ -1,11 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/user";
-import {
-  getCommentsByArticleId,
-  updateVoteByComment,
-  deleteCommentOnArticle,
-} from "../utils/api";
+import { getCommentsByArticleId, updateVoteByComment } from "../utils/api";
 import { formatDate } from "../utils/utils";
 import Popup from "./Popup";
 import { PostComment } from "./PostComment";
@@ -20,15 +16,6 @@ export function Comments({ article_id }) {
   const togglePopup = (comment_id) => {
     setCommentId(comment_id);
     setIsOpen(!isOpen);
-  };
-
-  const deleteComment = (comment_id) => {
-    const newCommentList = comments.filter(
-      (singleComment) => singleComment.comment_id !== comment_id
-    );
-    setComments(newCommentList);
-    togglePopup(comment_id);
-    deleteCommentOnArticle(comment_id);
   };
 
   const increaseCommentVotes = async (comment_id, votes) => {
@@ -77,6 +64,14 @@ export function Comments({ article_id }) {
                       </span>
                     </div>
                   ) : null}
+                  {/* popup window will appear when user want to delete his comments */}
+                  {isOpen && (
+                    <Popup
+                      setComments={setComments}
+                      commentId={commentId}
+                      handleClose={togglePopup}
+                    />
+                  )}
                 </div>
                 <p className='comment_article'>{body}</p>
               </div>
@@ -104,24 +99,6 @@ export function Comments({ article_id }) {
             </article>
           );
         })}
-        {/* popup window will appear when user want to delete his comments */}
-        {isOpen && (
-          <Popup
-            content={
-              <>
-                <div className='delete_container'>
-                  <h3>Are you sure you want to delete this comment?</h3>
-                  <button
-                    type='button'
-                    onClick={() => deleteComment(commentId)}>
-                    Delete
-                  </button>
-                </div>
-              </>
-            }
-            handleClose={togglePopup}
-          />
-        )}
       </section>
     </>
   );
