@@ -10,7 +10,7 @@
 }
 body {
   background-color: #d9eff3;
-  font-size: 2vw;
+  font-size: 1.6vw;
 }
 .app {
   padding: 10px;
@@ -180,31 +180,62 @@ margin: 50px;
   margin-top: 10px;
   font-size: -1vw;
 }
-.articlesList_button {
+/* .articlesList_button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
 .articlesList_button div {
   padding: 0px 10px; 
 }
 
-.articlesList_input input{
- margin-left: 10px;
- border-style: none;
- background-color: white;
+.articlesList_input span{
  
+ border-style: none;
+ position: relative;
+ bottom: 12px;
+ left: 89vw;
 }
 
-.articlesList_input input:hover {
+.articlesList_input span:hover {
   color: blue;
+}
+.postedArt-container {
+  display: grid;
+  grid-template-columns: 80vw 75px;
+  grid-template-rows: auto;
+  justify-content: center;
+  /* flex-direction: row;
+  justify-content: center; */
+  
+}
+/* .postedArt-btn {
+  height:2vh;
+  width: 100px;
+} */
+
+.postedArt-container button {
+  height: 10vh;
+  /* width: 75px; */
+  position: relative;
+  top: 10px;
+  background-color: white;
+  border-top: 1px solid #99dde9;
+  border-bottom: 1px solid #99dde9;
+  border-right: 1px solid #99dde9;
+  border-left: none;
+  font-size: small;
+}
+.postedArticle {
+  /* width: 80vw; */
+  height: 10vh;
+  margin: 10px auto;
 }
 .article_section , .comment_container{
   padding: 10px;
   margin: 10px;
   text-transform:none;
-  
 }
 
 .article_section h6 {
@@ -222,7 +253,6 @@ margin: 50px;
 
 .article_container{
   background-color: white;
-  border: 1px red solid;
   margin: 10px;
   
 }
@@ -255,7 +285,9 @@ margin: 50px;
   border-top: 1px solid black;
   
 }
-
+.comment_container h5 {
+  margin-top: 30px;
+}
 .comment_container article {
   border: 1px solid #999393;
   border-radius: 10px;
@@ -264,8 +296,18 @@ margin: 50px;
 
 .comment_post, .comment_post textarea {
   margin: 10px 0;
+  
+}
+.comment_post textarea {
+  max-width:100%;
 }
 
+.postComment-btn button {
+  border-radius: 5%;
+  margin-left: 10px;
+  background-color: #d9eff3;
+  padding: 3px;
+}
 .comment_button_container button{
   margin-left: 10px;
 }
@@ -298,7 +340,6 @@ margin: 50px;
   height: 100vh;
   top: 0;
   left: 0;
-  border: 1px red solid
 }
 
 .box {
@@ -306,12 +347,11 @@ margin: 50px;
   width: 70%;
   margin: 0 auto;
   height: auto;
-  max-height: 70vh;
+  max-height: 80vh;
   margin-top: calc(100vh - 85vh - 20px);
   background: #fff;
   border-radius: 4px;
   padding: 20px;
-  border: 1px solid yellow;
   overflow: auto;
 }
 
@@ -344,25 +384,14 @@ margin: 50px;
 }
 
 .userArticle_title {
+  width: 90vw;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: auto 70px;
-}
-.more_input {
-  border: 3px solid black;
-  width:30px;
-  height:30px;
-  border-radius: 50%;
-  align-self:center;
-  text-align: center;
-  font-size: bold;
-  font-size: 2vw;
-  background-color: white;
+  grid-template-columns: auto 100px;
+  align-content: center;
 }
 
-.more_input:hover{
-  color: blue;
-  border: 3px solid blue;
-}
+
 .userProfile_data img{
   margin: 10px;
   height: 30vh;
@@ -383,6 +412,72 @@ margin: 50px;
   font-size: medium;
 }
 
+.element-container{
+  width: 80vw;
+  height: 40vh;
+  margin:20px auto;
+  border-radius: 5%;
+  border: 2px solid #99dde9;
+  background-color: white;
+}
+
+.element-container h3 {
+  text-align: center;
+  font-size: 4vw;
+  margin: 30% auto;
+}
+.post-article-container {
+  text-align: center;
+}
+
+.post-article-container h3,
+.article-topic-container,
+.article-title-container,
+.textarea-container
+{font-size: 20px;
+  margin: 10px 0;
+}
+.article-topic-container select,
+.post-article-container button {
+  width: 120px;
+  padding: 7px;
+  background-color:#f7f3f3;
+}
+.article-title-container input {
+  width: 300px;
+}
+.textarea-container textarea {
+  width: 50vw;
+}
+.article-topic-container option {
+  text-transform: capitalize;
+  font-size: 1vw;
+}
+
+.icon{
+  content: '';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid black;
+  font-size: 30px;
+  color: black;
+  position: relative;
+  top: 18px;
+  left: 20px;
+}
+.icon:hover {
+  background-color: rgb(112, 203, 245);
+}
+
+#bigplus:before {
+  content: '+';
+}
+
+
 @media screen and (min-width: 1200px) {
   body{
     font-size: 1vw;
@@ -401,8 +496,8 @@ margin: 50px;
   }
   .more_input {
     
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     
   }
 }
