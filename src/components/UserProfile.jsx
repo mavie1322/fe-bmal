@@ -13,6 +13,7 @@ export function UserProfile() {
   const [articleId, setArticleId] = useState();
   const [isOpen, setIsOpen] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const text = "No Articles Posted";
 
   const clickHandler = () => {
@@ -30,8 +31,13 @@ export function UserProfile() {
         (singleArticle) => singleArticle.author === username
       );
       setArticlesList(articlesByUser);
+      setIsLoading(false);
     });
   }, [username]);
+
+  if (isLoading) {
+    return <NoElement text={"Loading ..."} />;
+  }
 
   return (
     <>
