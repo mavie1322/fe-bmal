@@ -5,8 +5,6 @@
   margin: 0;
   box-sizing: border-box;
   font-family:'Times New Roman', Times, serif ;
-  /* background-color:#e3f0f3; */
-  /* text-transform: capitalize;  */
 }
 body {
   background-color: #d9eff3;
@@ -43,7 +41,6 @@ body {
   font-weight: bold;
 }
 .login_label {
-  /* padding-top: 20px; */
   text-align: start;
   font-weight: bold;
 }
@@ -180,11 +177,6 @@ margin: 50px;
   margin-top: 10px;
   font-size: -1vw;
 }
-/* .articlesList_button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
 
 .articlesList_button div {
   padding: 0px 10px; 
@@ -206,14 +198,7 @@ margin: 50px;
   grid-template-columns: 80vw 75px;
   grid-template-rows: auto;
   justify-content: center;
-  /* flex-direction: row;
-  justify-content: center; */
-  
 }
-/* .postedArt-btn {
-  height:2vh;
-  width: 100px;
-} */
 
 .postedArt-container button {
   height: 10vh;
@@ -228,7 +213,6 @@ margin: 50px;
   font-size: small;
 }
 .postedArticle {
-  /* width: 80vw; */
   height: 10vh;
   margin: 10px auto;
 }
@@ -352,6 +336,7 @@ margin: 50px;
   background: #fff;
   border-radius: 4px;
   padding: 20px;
+  border: 1px solid #999;
   overflow: auto;
 }
 
@@ -416,9 +401,11 @@ margin: 50px;
   width: 80vw;
   height: 40vh;
   margin:20px auto;
-  border-radius: 5%;
+  border-radius: 10%;
   border: 2px solid #99dde9;
   background-color: white;
+  display: flex;
+  align-items: center;
 }
 
 .element-container h3 {
