@@ -1,72 +1,102 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getArticles, getUserByUsername } from "../utils/api";
+import { getArticles } from "../utils/api";
 import { formatDate } from "../utils/utils";
+import DeleteArticle from "./DeleteArticle";
+import { NoElement } from "./NoElement";
+import { PostArticle } from "./PostArticle";
+import UserInformation from "./UserInformation";
 
 export function UserProfile() {
   const { username } = useParams();
-  const [user, setUser] = useState({ username: "", name: "", avatar_url: "" });
-  const [articlesList, setArticleList] = useState([]);
+  const [articlesList, setArticlesList] = useState([]);
+  const [articleId, setArticleId] = useState();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
+  const text = "No Articles Posted";
 
-  useEffect(() => {
-    getUserByUsername(username).then((commentData) => {
-      setUser(commentData);
-    });
-  }, [username]);
+  const clickHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClick = (article_id) => {
+    setArticleId(article_id);
+    setIsDeleted(!isDeleted);
+  };
 
   useEffect(() => {
     getArticles("", "", "").then((articleList) => {
       const articlesByUser = articleList.filter(
         (singleArticle) => singleArticle.author === username
       );
-      setArticleList(articlesByUser);
+      setArticlesList(articlesByUser);
     });
   }, [username]);
 
   return (
     <>
-      {/* user personal information */}
       <div className='userProfile_container'>
-        <div className='userProfile_data'>
-          <h3>{user.username}</h3>
-          <img src={user.avatar_url} alt={`${user.username} avatar`} />
-          <p>Name : {user.name}</p>
-        </div>
+        <UserInformation username={username} />
         <div className='userArticle'>
           {/* articles posted by the user */}
           <div className='userArticle_title'>
             <h2>Articles Posted</h2>
-            <input className='more_input' type='button' value='+' />
-          </div>
-          {articlesList.map(
-            ({ article_id, title, comment_count, votes, created_at }) => {
-              return (
-                <Link
-                  key={article_id}
-                  to={`/articles/${article_id}`}
-                  className='articlesList_link'>
-                  <div className='articlesList_li'>
-                    <div className='articlesList_button'>
-                      <h3>{title}</h3>
-                      <div className='articlesList_input'>
-                        <input type='button' value='Edit' />
-                        <input type='button' value='Delete' />
-                      </div>
-                    </div>
-                    <section>
-                      <p>{comment_count} comments</p>
-                      {votes >= 0 ? (
-                        <p className='heart'>{votes} ❤️</p>
-                      ) : (
-                        <p className='heart'>{votes} 🖤</p>
-                      )}
+            {/* unactive Plus Button */}
+            <button
+              className='icon'
+              id='bigplus'
+              onClick={() => clickHandler()}></button>
 
-                      <p>Created on {formatDate(created_at)}</p>
-                    </section>
-                  </div>
-                </Link>
-              );
-            }
+            {isOpen && (
+              <PostArticle
+                handleClose={clickHandler}
+                setArticlesList={setArticlesList}
+              />
+            )}
+          </div>
+          {articlesList.length > 0 ? (
+            <>
+              {articlesList.map(
+                ({ article_id, title, comment_count, votes, created_at }) => {
+                  return (
+                    <div className='postedArt-container' key={article_id}>
+                      <Link
+                        to={`/articles/${article_id}`}
+                        className='articlesList_link'>
+                        <div className='articlesList_li postedArticle'>
+                          <div className='articlesList_button'>
+                            <h3>{title}</h3>
+                          </div>
+                          <section>
+                            <p>{comment_count} comments</p>
+                            {votes >= 0 ? (
+                              <p className='heart'>{votes} ❤️</p>
+                            ) : (
+                              <p className='heart'>{votes} 🖤</p>
+                            )}
+                            <p>Created on {formatDate(created_at)}</p>
+                          </section>
+                        </div>
+                      </Link>
+                      <button
+                        className='postedArt-btn'
+                        onClick={() => handleClick(article_id)}>
+                        Delete
+                      </button>
+                      {isDeleted && (
+                        <DeleteArticle
+                          articleId={articleId}
+                          handleClose={handleClick}
+                          setArticlesList={setArticlesList}
+                        />
+                      )}
+                    </div>
+                  );
+                }
+              )}
+            </>
+          ) : (
+            <NoElement text={text} />
           )}
         </div>
       </div>
