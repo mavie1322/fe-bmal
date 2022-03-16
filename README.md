@@ -4,7 +4,7 @@ We built an application such as reddit or quora where users can publish, comment
 
 ## Front-End Functionalities
 
-Following the creation of our API, we have created this multi-functional application. We decided not to use any User Interface framework so we could deepen our knowledge in CSS. The application is still in development mode and haven't been deployed because we want to add the improvements below.
+Following the creation of our API, we have created this multi-functional application. We decided not to use any User Interface framework so we could deepen our knowledge in CSS. It is build and deployed on Netlify(https://focused-jones-6f450b.netlify.app/). You can log in using usernames on this page https://bmal237.herokuapp.com/api/users
 
 ### Build with:
 
@@ -24,7 +24,7 @@ Then you need to follow these differents steps:
 On the command line, navigate to the folder you want this repository to be store and enter the code below:
 
 ```
-$ git clone https_url
+$ git clone https_of_the_repository
 ```
 
 #### Install dependencies
@@ -35,18 +35,15 @@ You need to enter the following code on your terminal to install the modules.
 $ npm install
 ```
 
-In the project directory, you can run:
-
 ### Run script
 
 It will open the localhost in your browser
 
 ```
-$ npm install
+$ npm start
 ```
 
 ### Improvements:
 
 - Use UI framework such as Material UI
-- Build and Deploy the application
-- Add more functionalities such as posting, editing, deleting articles
+- Add more functionalities such as register an user, edit comments or articles,
