@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { UserContext } from "../context/user";
 import { getArticles } from "../utils/api";
 import { formatDate } from "../utils/utils";
 import DeleteArticle from "./DeleteArticle";
@@ -8,6 +9,7 @@ import { PostArticle } from "./PostArticle";
 import UserInformation from "./UserInformation";
 
 export function UserProfile() {
+  const { loggedInUser } = useContext(UserContext);
   const { username } = useParams();
   const [articlesList, setArticlesList] = useState([]);
   const [articleId, setArticleId] = useState();
@@ -48,10 +50,12 @@ export function UserProfile() {
           <div className='userArticle_title'>
             <h2>Articles Posted</h2>
             {/* unactive Plus Button */}
-            <button
-              className='icon'
-              id='bigplus'
-              onClick={() => clickHandler()}></button>
+            {loggedInUser.username === username ? (
+              <button
+                className='icon'
+                id='bigplus'
+                onClick={() => clickHandler()}></button>
+            ) : null}
 
             {isOpen && (
               <PostArticle
@@ -84,11 +88,14 @@ export function UserProfile() {
                           </section>
                         </div>
                       </Link>
-                      <button
-                        className='postedArt-btn'
-                        onClick={() => handleClick(article_id)}>
-                        Delete
-                      </button>
+                      {loggedInUser.username === username ? (
+                        <button
+                          className='postedArt-btn'
+                          onClick={() => handleClick(article_id)}>
+                          Delete
+                        </button>
+                      ) : null}
+
                       {isDeleted && (
                         <DeleteArticle
                           articleId={articleId}
