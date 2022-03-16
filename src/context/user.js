@@ -15,21 +15,6 @@ export const UserProvider = ({ children }) => {
     auth: false,
   });
 
-  //   const login = (username) => {
-  //     setLoggedInUser((loggedInUser) => ({
-  //       ...loggedInUser,
-  //       username: username,
-  //       auth: true,
-  //     }));
-  //   };
-  //   const logout = () => {
-  //     setLoggedInUser((loggedInUser) => ({
-  //       username: "",
-  //       avatar_url: "",
-  //       name: "",
-  //       auth: false,
-  //     }));
-  //   };
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       {children}
