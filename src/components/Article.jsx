@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import { getArticleById, updateVoteByArticle } from "../utils/api";
 import { formatDate } from "../utils/utils";
 import { Comments } from "./Comments";
