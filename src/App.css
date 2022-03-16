@@ -487,6 +487,9 @@ margin: 50px;
     height: 30px;
     
   }
+  .element-container {
+    width: 50vw;
+  }
 }
 
 
