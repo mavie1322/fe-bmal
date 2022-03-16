@@ -4,7 +4,7 @@ We built an application such as reddit or quora where users can publish, comment
 
 ## Front-End Functionalities
 
-Following the creation of our API, we have created this multi-functional application. We decided not to use any User Interface framework so we could deepen our knowledge in CSS. It is build and deployed on Netlify(https://focused-jones-6f450b.netlify.app/). You can log in using usernames on this page https://bmal237.herokuapp.com/api/users
+Following the creation of our API, we have created this multi-functional application. We decided not to use any User Interface framework so we could deepen our knowledge in CSS. It is build and deployed on Netlify(https://bmal.netlify.app/). You can log in using usernames on this page https://bmal237.herokuapp.com/api/users
 
 ### Build with:
 
