@@ -10,18 +10,12 @@ export function ArticlesList(props) {
   const [articlesList, setArticlesList] = useState([]);
   const [sortBy, setSortBy] = useState("");
   const [order, setOrder] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getArticles(props, sortBy, order).then((articles) => {
       setArticlesList(articles);
-      setIsLoading(false);
     });
   }, [props, sortBy, order]);
-
-  if (isLoading) {
-    return <NoElement text={"Loading ..."} />;
-  }
 
   return (
     <>

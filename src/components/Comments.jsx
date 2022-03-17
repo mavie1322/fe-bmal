@@ -13,7 +13,6 @@ export function Comments({ article_id }) {
   const [commentVotes, setCommentVotes] = useState();
   const [commentId, setCommentId] = useState();
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   const togglePopup = (comment_id) => {
     setCommentId(comment_id);
@@ -35,12 +34,9 @@ export function Comments({ article_id }) {
   useEffect(() => {
     getCommentsByArticleId(article_id).then((comments) => {
       setComments(comments);
-      setIsLoading(false);
     });
   }, [article_id, commentId]);
-  if (isLoading) {
-    return <NoElement text={"Loading"} />;
-  }
+
   return (
     <>
       {/* post a comment */}
