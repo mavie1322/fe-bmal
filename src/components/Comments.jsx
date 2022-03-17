@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../context/user";
 import { getCommentsByArticleId, updateVoteByComment } from "../utils/api";
 import { formatDate } from "../utils/utils";
-import { NoElement } from "./NoElement";
 import Popup from "./Popup";
 import { PostComment } from "./PostComment";
 
