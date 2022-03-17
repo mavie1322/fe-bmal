@@ -44,68 +44,71 @@ export function Comments({ article_id }) {
         <PostComment article_id={article_id} setComments={setComments} />
         {/* comments will appear below */}
         <h5>Discussion({comments.length})</h5>
-        {comments.length > 0 ? (
-          comments.map(({ comment_id, author, body, votes, created_at }) => {
-            return (
-              <article
-                key={comment_id}
-                className='comment_container comment article'>
-                <div>
-                  <div className='bottom_display'>
-                    {/* redirect toward the author profile  */}
-                    <Link to={`/users/${author}`} className='articlesList_link'>
-                      <p className='comment_author'>{author}</p>
-                    </Link>
-                    {/* delete span tag appears for comments written by user  */}
-                    {loggedInUser.username === author ? (
-                      <div>
-                        <span
-                          className='article_delete'
-                          onClick={() => togglePopup(comment_id)}>
-                          Delete
-                        </span>
-                      </div>
-                    ) : null}
-                    {/* popup window will appear when user want to delete his comments */}
-                    {isOpen && (
-                      <Popup
-                        setComments={setComments}
-                        commentId={commentId}
-                        handleClose={togglePopup}
-                      />
-                    )}
-                  </div>
-                  <p className='comment_article'>{body}</p>
-                </div>
-                {/* like and dislike button */}
-                <div className='bottom_display'>
-                  <div className='vote'>
-                    <button
-                      type='button'
-                      onClick={() => increaseCommentVotes(comment_id, votes)}>
-                      &#128077;
-                    </button>
-                    <p>
-                      {commentId === comment_id && commentVotes
-                        ? commentVotes
-                        : votes}
-                    </p>
-                    <button
-                      type='button'
-                      onClick={() => decreaseCommentVotes(comment_id, votes)}>
-                      &#128078;
-                    </button>
-                  </div>
-                  <p className='comment_date'>{formatDate(created_at)}</p>
-                </div>
-              </article>
-            );
-          })
-        ) : (
+        {comments.length === 0 ? (
           <>
             <NoElement text={"No Comments Posted"} />
           </>
-        )}
+        ) : null}
+        {comments.length > 0
+          ? comments.map(({ comment_id, author, body, votes, created_at }) => {
+              return (
+                <article
+                  key={comment_id}
+                  className='comment_container comment article'>
+                  <div>
+                    <div className='bottom_display'>
+                      {/* redirect toward the author profile  */}
+                      <Link
+                        to={`/users/${author}`}
+                        className='articlesList_link'>
+                        <p className='comment_author'>{author}</p>
+                      </Link>
+                      {/* delete span tag appears for comments written by user  */}
+                      {loggedInUser.username === author ? (
+                        <div>
+                          <span
+                            className='article_delete'
+                            onClick={() => togglePopup(comment_id)}>
+                            Delete
+                          </span>
+                        </div>
+                      ) : null}
+                      {/* popup window will appear when user want to delete his comments */}
+                      {isOpen && (
+                        <Popup
+                          setComments={setComments}
+                          commentId={commentId}
+                          handleClose={togglePopup}
+                        />
+                      )}
+                    </div>
+                    <p className='comment_article'>{body}</p>
+                  </div>
+                  {/* like and dislike button */}
+                  <div className='bottom_display'>
+                    <div className='vote'>
+                      <button
+                        type='button'
+                        onClick={() => increaseCommentVotes(comment_id, votes)}>
+                        &#128077;
+                      </button>
+                      <p>
+                        {commentId === comment_id && commentVotes
+                          ? commentVotes
+                          : votes}
+                      </p>
+                      <button
+                        type='button'
+                        onClick={() => decreaseCommentVotes(comment_id, votes)}>
+                        &#128078;
+                      </button>
+                    </div>
+                    <p className='comment_date'>{formatDate(created_at)}</p>
+                  </div>
+                </article>
+              );
+            })
+          : null}
       </section>
     </>
   );
