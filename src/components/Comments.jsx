@@ -44,11 +44,7 @@ export function Comments({ article_id }) {
         <PostComment article_id={article_id} setComments={setComments} />
         {/* comments will appear below */}
         <h5>Discussion({comments.length})</h5>
-        {comments.length === 0 ? (
-          <>
-            <NoElement text={"No Comments Posted"} />
-          </>
-        ) : null}
+
         {comments.length > 0
           ? comments.map(({ comment_id, author, body, votes, created_at }) => {
               return (
