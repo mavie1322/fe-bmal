@@ -4,7 +4,6 @@ import { UserContext } from "../context/user";
 import { getArticles } from "../utils/api";
 import { formatDate } from "../utils/utils";
 import DeleteArticle from "./DeleteArticle";
-import { NoElement } from "./NoElement";
 import { PostArticle } from "./PostArticle";
 import UserInformation from "./UserInformation";
 
@@ -15,7 +14,6 @@ export function UserProfile() {
   const [articleId, setArticleId] = useState();
   const [isOpen, setIsOpen] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
-  const text = "No Articles Posted";
 
   const clickHandler = () => {
     setIsOpen(!isOpen);
@@ -102,9 +100,7 @@ export function UserProfile() {
                 }
               )}
             </>
-          ) : (
-            <NoElement text={text} />
-          )}
+          ) : null}
         </div>
       </div>
     </>
