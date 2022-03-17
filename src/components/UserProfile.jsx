@@ -32,7 +32,6 @@ export function UserProfile() {
         (singleArticle) => singleArticle.author === username
       );
       setArticlesList(articlesByUser);
-      setIsLoading(false);
     });
   }, [username]);
 
