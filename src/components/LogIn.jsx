@@ -6,8 +6,7 @@ import "../App.css";
 const getLocalStorage = () => {
   let storedName = localStorage.getItem("signedName");
   if (storedName) {
-    return (list = localStorage.getItem("signedName"));
-    add;
+    return (list = JSON.parse(localStorage.getItem("signedName")));
   } else {
     return "";
   }
@@ -37,7 +36,7 @@ export function LogIn({ setLoggedInUser }) {
   const handleChange = (event) => {
     const usernameEntered = event.target.value;
     // setSignedName(usernameEntered)
-    localStorage.setItem(usernameEntered);
+    localStorage.setItem(usernameEntered, JSON.stringify(usernameEntered));
   };
 
   return (
