@@ -1,19 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getUserByUsername } from "../utils/api";
 import IsUsernameExist from "./IsUsernameExist";
 import "../App.css";
 
-const getLocalStorage = () => {
-  let storedName = localStorage.getItem("signedName");
-  if (storedName) {
-    return (storedName = JSON.parse(localStorage.getItem("signedName")));
-  } else {
-    return "";
-  }
-};
-
 export function LogIn({ setLoggedInUser }) {
-  const [signedName, setSignedName] = useState(getLocalStorage);
+  const [signedName, setSignedName] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +17,7 @@ export function LogIn({ setLoggedInUser }) {
             name: user.name,
             auth: true,
           });
+          localStorage.setItem("user", user.username);
         }
       })
       .catch(() => {
@@ -35,10 +27,15 @@ export function LogIn({ setLoggedInUser }) {
 
   const handleChange = (event) => {
     const usernameEntered = event.target.value;
-    // setSignedName(usernameEntered)
-    localStorage.setItem(usernameEntered, JSON.stringify(usernameEntered));
+    setSignedName(usernameEntered);
   };
-
+  useEffect(() => {
+    const loggedUser = localStorage.getItem("user");
+    if (loggedUser) {
+      const foundUser = JSON.parse(loggedUser);
+      setSignedName(foundUser);
+    }
+  }, []);
   return (
     <>
       <div className='login_title'>BMAL</div>
