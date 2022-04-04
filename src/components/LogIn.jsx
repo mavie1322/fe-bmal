@@ -6,7 +6,7 @@ import "../App.css";
 const getLocalStorage = () => {
   let storedName = localStorage.getItem("signedName");
   if (storedName) {
-    return (list = JSON.parse(localStorage.getItem("signedName")));
+    return (storedName = JSON.parse(localStorage.getItem("signedName")));
   } else {
     return "";
   }
