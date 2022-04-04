@@ -13,6 +13,7 @@ export function Header() {
       name: "",
       auth: false,
     }));
+    localStorage.clear();
   };
 
   return (
