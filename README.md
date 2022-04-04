@@ -4,7 +4,10 @@ We built an application such as reddit or quora where users can publish, comment
 
 Following the creation of our API, we have created this multi-functional application.  
 Access my site at https://bmal.netlify.app/
-You can log in using usernames on this [page](https://bmal237.herokuapp.com/api/).
+
+You can log in using usernames: 
+- cooljmessy, grumpy19 or tickle122
+- pick one from this [page](https://bmal237.herokuapp.com/api/users).
 
 ## Requirements
 
