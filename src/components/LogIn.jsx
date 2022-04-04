@@ -32,8 +32,7 @@ export function LogIn({ setLoggedInUser }) {
   useEffect(() => {
     const loggedUser = localStorage.getItem("user");
     if (loggedUser) {
-      const foundUser = JSON.parse(loggedUser);
-      setSignedName(foundUser);
+      setSignedName(loggedUser);
     }
   }, []);
   return (
